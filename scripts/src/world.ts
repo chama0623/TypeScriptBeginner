@@ -7,6 +7,7 @@ export default class World {
     this.message = message
   }
 
+  // テストコメント
   // 外部から呼び出せるメソッドを定義
   public sayHello(elem: HTMLElement | null) {
     if (elem) {
