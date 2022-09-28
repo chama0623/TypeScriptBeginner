@@ -1,5 +1,3 @@
-import World from './world'
+import { primitiveSample } from './basic'
 
-const root: HTMLElement | null = document.getElementById('root')
-const world = new World('Hello World!!!')
-world.sayHello(root)
+primitiveSample()
