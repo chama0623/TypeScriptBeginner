@@ -336,3 +336,49 @@ command[2] = "git pull" // 代入不可能
 const numbers: ReadonlyArray<number> = [1,2,3]
 const numbers: Readonly<string[]> = ["Taro", "Jiro"]
 ```
+
+## ジェネリック型とポリモーフィズム
+
+ここではジェネリック型とポリモーフィズムについて説明する.
+ジェネリック型 : 型の種類が異なるが同じデータ構造のものを共通化, 抽象化するための型  
+```ts
+// 型の種類が異なるが同じデータ構造の例
+const stringReduce = (array: string[], initialValue:string): string => {}
+const numberReduce = (array: number[], initialValue:number): number => {}
+```
+
+ジェネリック型パラメータ
+- 型をパラメータ化する
+- T, U, V, Wがよく用いられる
+
+```ts
+// ジェネリック型を定義
+// 引数がT型の配列とT型のinitialValueで, 戻り値がTs
+type Reduce<T> = {
+    (array: T[], initialValue: T): T
+}
+// 使うときにTに型をはめる
+const reduce: Reduce<string> = (array, initialValue) => {}
+```
+
+### ジェネリックの宣言方法
+ジェネリック型の宣言方法には呼び出しシグネチャの記法と, ジェネリック型の割り当て範囲の2つがある.
+```ts
+// 完全な呼び出しシグネチャ
+type GenericReduce<T> = {
+    (array: T[], initialValue: T): T
+}
+
+// 完全な呼び出しシグネチャ
+type GenericReduce = {
+    <T>(array: T[], initialValue: T):T
+    <U>(array: U[], initialValue: U):U
+
+}
+
+// 呼び出しシグネチャの省略記法
+type GenericReduce<T> = (array: T[], initialValue:T) => {}
+type GenericReduce = <T>(array: T[], initialValue:T) => {}
+```
+
+このようにジェネリック型を用いると型を抽象化して共通化できる. そして呼び出すときに具体的な値を渡すようになる. このようないろいろな形に変化できる多態性・多相性のことをポリモーフィズムという.
