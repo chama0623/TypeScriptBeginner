@@ -391,3 +391,66 @@ type GenericReduce = <T>(array: T[], initialValue:T) => {}
 - たくさん作る : 同じ機能を持つクローンを量産できる
 
 TSでオブジェクト指向の勉強しながら将棋を作るよ(src/oop)
+
+## InterfaceとType
+
+### Interface宣言子の定義
+Interfaceの定義方法を次に示す. interfaceは同名のものを複数宣言すると自動でマージが行われる. 
+```ts
+interface Bread{
+    calories: number
+}
+
+interface Bread{
+    type: string
+}
+
+const francePan: Bread = {
+    calories: 350,
+    type: "hard"
+}
+```
+
+### Interfaceの拡張
+extendsを使うことであるインターフェースを継承したサブインターフェースを作ることができる.
+Type Aliasを継承することもできる.
+```ts
+interface Book{
+    page:number
+    title:string
+}
+
+interface Magazine extends Book{
+    cycle: "daily"|"weekly"|"monthly"|"yearly"
+}
+
+const jump:Magazine = {
+    cycle: "weekly",
+    page:300,
+    title:"週刊少年ジャンプ"
+}
+```
+
+### Interfaceでclassに型を定義する
+implementsを用いてclassに型を定義することができる. 例を次に示す.
+```ts
+interface Book{
+    page:number
+    title:string
+}
+
+class Comic implements Book{
+    page: number;
+    title:string;
+
+    constructor(page: number, title:string){
+        this.page = page
+        this.title = title
+    }
+}
+
+const favComic = new Comic(200, "CCさくら")
+```
+
+### Type AliasとInterfaceの違い
+Typeは型に名前をつけるもので, Interfaceはオブジェクト, クラス, 関数の構造を定義するためのものである. Typeには拡張しにくいという不便性があり, Interfaceは拡張しやすいがそれゆえにバグを生みやすいということがある. アプリ開発ではType Alias, ライブラリ開発ではInterfaceが用いられる.
