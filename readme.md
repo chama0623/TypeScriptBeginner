@@ -454,3 +454,16 @@ const favComic = new Comic(200, "CCさくら")
 
 ### Type AliasとInterfaceの違い
 Typeは型に名前をつけるもので, Interfaceはオブジェクト, クラス, 関数の構造を定義するためのものである. Typeには拡張しにくいという不便性があり, Interfaceは拡張しやすいがそれゆえにバグを生みやすいということがある. アプリ開発ではType Alias, ライブラリ開発ではInterfaceが用いられる.
+
+## 非同期処理でも型定義
+復習 : 非同期処理はAPIをたたくとき, DBへクエリを投げるときなどに用いられる. TypeScriptでもPromise, async, awaitを使うことができる. 
+
+### Promise型
+Promise型の定義方法を示す
+```ts
+type FetchProfile = () => Promise<Profile | null>
+
+const fetchProfile: FethProfile = () =>{
+
+}
+```

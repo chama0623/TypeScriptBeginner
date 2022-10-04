@@ -4,8 +4,11 @@
 // import objectSample from './object/object'
 // import objectSample from './array/array'
 // import tupleSample from './array/tuple'
-import genericsBasicSample from './generics/basic'
-import genericsAdvancedSample from './generics/advanced'
+// import genericsBasicSample from './generics/basic'
+// import genericsAdvancedSample from './generics/advanced'
+// import callbackSample from "./asynchronous/callback"
+// import PromiseSample from "./asynchronous/promise"
+import asyncAwaitSample from './asynchronous/asyncAwait'
 
 /* primitiveSample()
 notExistSample()
@@ -26,8 +29,14 @@ logMessage('ログだよ～')
 
 objectSample()
 tupleSample()
-*/
+
 
 genericsBasicSample()
-
 genericsAdvancedSample()
+
+callbackSample()
+
+PromiseSample()
+*/
+
+asyncAwaitSample()
